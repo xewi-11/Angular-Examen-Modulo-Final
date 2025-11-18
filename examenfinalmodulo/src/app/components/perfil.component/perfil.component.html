@@ -1,0 +1,18 @@
+ <div class="profile-container">
+    <h1>Tus compras</h1>
+    <table class="profile-table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{user.nombre}}</td>
+                <td>{{user.email}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn" (click)="irACompras()">Ver compras</button>
+  </div>

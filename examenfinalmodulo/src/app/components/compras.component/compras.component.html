@@ -1,0 +1,21 @@
+<div class="compras-container">
+    <h1>Tus compras</h1>
+    <table class="compras-table">
+      <thead>
+          <tr>
+              <th>ID Pedido</th>
+              <th>ID Cubo</th>
+              <th>Fecha del Pedido</th>
+          </tr>
+      </thead>
+      <tbody>
+        @for( compra of compras; track compra) {
+          <tr >
+              <td>{{ compra.idPedido }}</td>
+              <td>{{ compra.idCubo }}</td>
+              <td>{{ compra.fechaPedido }}</td>
+          </tr>}
+      </tbody>
+    </table>
+    <button class="btn" (click)="irARealizarPedido()">Realizar Pedido</button>
+  </div>

@@ -1,0 +1,12 @@
+<div class="pedidos-container">
+    <form class="pedidos-form" #form="ngForm">
+        <label for="select">Seleccione un cubo:</label>
+        <select #selectedCubo id="select">
+            @for(cubo of cubos; track cubo) {
+            <option  [value]="cubo.idCubo">
+                {{cubo.nombre}} - {{cubo.precio}}€
+            </option>}
+        </select>
+        <button class="btn" type="button" (click)="realizarCompra()">Realizar Pedido</button>
+    </form>
+</div>

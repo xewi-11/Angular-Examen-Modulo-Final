@@ -1,0 +1,79 @@
+<div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a [routerLink]="'/'" class="nav-link active" aria-current="page">Cubos</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Marcas
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              @for( marca of marcas; track marca) {
+              <li>
+                <a class="dropdown-item" [routerLink]="'/marcas/' + marca">{{ marca }}</a>
+              </li>
+              }
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Seguridad
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              @if(tokenUser()=='') {
+              <li>
+
+                <a class="dropdown-item" [routerLink]="'/login'">Iniciar Sesion</a>
+              </li>
+              }
+              <li>
+                 <button (click)="cerrarSesion()">Cerrar Sesion</button> 
+              </li>
+              
+            </ul>
+          </li>
+          <li  class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Usuario
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <a class="dropdown-item" [routerLink]="'/perfil'">Perfil</a>
+              </li>
+              <li>
+                <a class="dropdown-item" [routerLink]="'/pedidos'">Realizar pedido</a>
+              </li>
+              <li>
+                <a class="dropdown-item" [routerLink]="'/compras'">Ver compras</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>

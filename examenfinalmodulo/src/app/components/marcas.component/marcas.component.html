@@ -1,0 +1,14 @@
+<div>
+    <h1>Bienvenido a la tienda de cubos</h1>
+    <div class="card-container">
+        @for( cubo of cubos;track cubo){
+             <div class="card">
+            <img [src]="cubo.imagen" alt="cubo.nombre"/>
+            <h5 class="card-title">{{ cubo.nombre }}</h5>
+            <p class="card-text">
+            Precio: {{ cubo.precio }}€
+            </p>
+        </div>
+        }
+    </div>
+   </div>
