@@ -12,13 +12,16 @@ import { environment } from '../../../environments/environment.development';
 })
 export class PerfilComponent implements OnInit {
  public user!:User;
-
+private tokenUser=localStorage.getItem('tokenUser');
 
  constructor(private service:Servicecubos,private route:Router){
 
  }
  ngOnInit(): void {
     this.cargarPerfil();
+     if(!this.tokenUser){
+        this.route.navigate(['/login']);
+    }
  }
  cargarPerfil(){
   console.log(environment.tokenUser);

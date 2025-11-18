@@ -13,12 +13,16 @@ export class PedidosComponent implements OnInit {
   @ViewChild('selectedCubo') selectedCubo: any;
 
   public cubos: Array<any>;
+  private tokenUser=localStorage.getItem('tokenUser');
   constructor(private service: Servicecubos, private route: Router) {
     this.cubos = new Array<any>();
     this.selectedCubo = new ElementRef(0);
   }
   ngOnInit(): void {
     this.cargarCubos();
+    if(!this.tokenUser){
+        this.route.navigate(['/login']);
+    }
   }
   cargarCubos() {
     this.service.getCubos().subscribe((data) => {

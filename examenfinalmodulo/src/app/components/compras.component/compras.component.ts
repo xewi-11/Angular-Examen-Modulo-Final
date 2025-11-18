@@ -10,11 +10,15 @@ import { Route, Router } from '@angular/router';
 })
 export class ComprasComponent implements OnInit {
   public compras: Array<any>;
+  private tokenUser=localStorage.getItem('tokenUser');
   constructor(private service: Servicecubos, private route: Router) {
     this.compras = new Array<any>();
   }
   ngOnInit(): void {
     this.cargarCompras();
+    if(!this.tokenUser){
+        this.route.navigate(['/login']);
+    }
   }
   cargarCompras() {
     this.service.getComprasUser().subscribe((data) => {

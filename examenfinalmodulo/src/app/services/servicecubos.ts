@@ -4,12 +4,13 @@ import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { environment } from '../../environments/environment.development';
 import { Cubo } from '../../models/cubo';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class Servicecubos {
-   constructor(private http: HttpClient) {  }
+   constructor(private http: HttpClient,private router:Router) {  }
    
    getCubos():Observable<Cubo[]>{
 
@@ -38,7 +39,7 @@ export class Servicecubos {
   getUserByToken(): Observable<any> {
     const token = localStorage.getItem('tokenUser');
     if (!token) {
-        throw new Error('Token no encontrado');
+        this.router.navigate(['/login']);
     }
     let header = new HttpHeaders();
     header = header.set('Authorization', `Bearer ${token}`);
@@ -47,7 +48,7 @@ export class Servicecubos {
   getComprasUser(){
     const token = localStorage.getItem('tokenUser');
     if (!token) {
-        throw new Error('Token no encontrado');
+        this.router.navigate(['/login']);
     }
     let header = new HttpHeaders();
     header = header.set('Authorization', `Bearer ${token}`);
@@ -59,6 +60,9 @@ export class Servicecubos {
     let header = new HttpHeaders();
     if (token) {
         header = header.set('Authorization', `Bearer ${token}`);
+    }else{
+      this.router.navigate(['/login']);
+        return;
     }
     let request='api/Compra/InsertarPedido/'+cuboid;
     let cubos=new Array<any>();
